@@ -1,0 +1,30 @@
+version: "3"
+services: 
+
+  server:
+    container_name: sanic_server
+    build: .
+    ports: ["8000:8000"]
+    volumes: ['.:/app']
+    restart: always
+    environment:
+      ENV: DEVELOPMENT
+      DB_USERNAME: root
+      DB_PASSWORD: dbpass
+      DB_DATABASE: sanic_db
+      DB_HOST: sanic_database
+    links:
+      - database:db
+  database:
+    container_name: sanic_database
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: sanic_db
+      MYSQL_USER: venky
+      MYSQL_PASSWORD: venky8283
+      MYSQL_ROOT_PASSWORD: dbpass
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
