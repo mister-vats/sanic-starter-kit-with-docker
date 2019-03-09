@@ -29,7 +29,7 @@ If you have a different or preferred way of doing this you will have to update t
 `/alembic/env.py` and the `app/database.py` file to reflect your preferred way.
 
 
-### Commands
+### Commands (With Virtual Environment)
 `make run` - Runs the Sanic server
 
 `make revision` - Checks all of the `Base.metadata` and generates a new
@@ -40,3 +40,6 @@ migration script under /alembic/versions
 
 
 `make downgrade` - Drops all of the revision heads tables.
+
+### Commands (With docker)
+`docker-compose up --build` - runs application in dockerized environment
